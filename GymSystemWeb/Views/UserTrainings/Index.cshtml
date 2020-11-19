@@ -1,0 +1,49 @@
+﻿@model IEnumerable<GymSystem.Models.UserTraining>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Dolasci</h2>
+
+<p>
+    <a asp-action="Create">Dodaj dolazak</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Timestamp)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UserId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TrainingId)
+            </th>
+            
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Timestamp)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.user.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.training.Date)
+            </td>
+            
+            <td>
+                @*@Html.ActionLink("Edit", "Edit", new { item.Id}) |*@
+                @Html.ActionLink("Details", "Details", new { item.Id }) |
+                @Html.ActionLink("Delete", "Delete", new { item.Id })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

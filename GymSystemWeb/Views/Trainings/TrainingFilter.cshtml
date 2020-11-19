@@ -1,0 +1,72 @@
+﻿@model IEnumerable<GymSystem.Models.Training>
+@{
+    ViewData["Title"] = "TrainingFilter";
+}
+
+<h2>TrainingFilter</h2>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="TrainingFilter">
+
+            <div class="form-group">
+                <label for="compare" class="control-label">Izaberi komparaciju:</label>
+                <select name="compare">
+                    <option value="<" @if(ViewBag.compare == "<") {selected} @endif>Manje</option>
+                    <option value=">" @if(ViewBag.compare == ">") {selected} @endif>Vece</option>
+                    <option value="==" @if(ViewBag.compare == "==") {selected} @endif>Jednako</option>
+                </select>
+
+            </div> 
+
+            <div class="form-group">
+                <label for="Date" class="control-label">Datum treninga</label>
+                <input name="Date" value="@ViewBag.FilterDate" type="datetime-local" class="form-control" />
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Filter" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@if (Model != null)
+{
+
+    <table class="table">
+        <thead>
+            <tr>
+              
+                <th>
+                    @Html.DisplayNameFor(model => model.Date)
+                </th>
+
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                 
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Date)
+                    </td>
+
+                </tr>
+            }
+        </tbody>
+    </table>
+
+}
+
+
+
+
+
+

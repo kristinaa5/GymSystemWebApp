@@ -1,0 +1,78 @@
+﻿@model IEnumerable<GymSystem.ViewModels.UserTrainingsViewModel>
+@{
+    ViewData["Title"] = "Filter";
+}
+
+<h2>Filter</h2>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Filter">
+
+            <div class="form-group">
+                <label for="Gender" class="control-label">Pol</label>
+                <input name="Gender" type="text" class="form-control" />              
+            </div>
+
+            <div class="form-group">
+                <label for="Address" class="control-label">Adresa</label>
+                <input name="Address" type="text" class="form-control" />               
+            </div>
+
+            <div class="form-group">
+                <label for="Date" class="control-label">Datum treninga</label>
+                <input name="Date" type="datetime-local" class="form-control" />
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Filter" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@if (Model != null)
+{
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Name)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Address)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Date)
+                </th>
+               
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Address)
+                    </td>                 
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Date)
+                    </td>
+                    
+                </tr>
+            }
+        </tbody>
+    </table>
+
+}
+
+
